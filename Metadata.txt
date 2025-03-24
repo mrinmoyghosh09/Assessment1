@@ -1,0 +1,25 @@
+Tables along the Metadata - 
+
+CREATE TABLE [dbo].[Customer](
+	[Customer_ID] [INT] PRIMARY KEY,
+	[First] [nvarchar](255),
+	[Last] [nvarchar](255),
+	[Age] [INT],
+	[Country] [nvarchar](255)
+)
+
+CREATE TABLE [dbo].[Order](
+	[Order_ID] [INT] PRIMARY KEY,
+	[Item] [varchar](50),
+	[Amount] [float],
+	[Customer_ID] [INT],
+	FOREIGN KEY ([Customer_ID]) REFERENCES Customer([Customer_ID])
+)
+
+CREATE TABLE [dbo].[Shipping](
+	[Shipping_ID] INT PRIMARY KEY,
+	[Status] [varchar](50),
+	[Customer_ID] [INT],
+	FOREIGN KEY ([Customer_ID]) REFERENCES Customer([Customer_ID])
+)
+
